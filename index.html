@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Message</title>
+
+    <style>
+        /* ---------- Base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: #000;
+            color: #fff;
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
+        }
+
+        .panel {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            scroll-snap-align: start;
+        }
+
+        /* ---------- 1. Intro lines ---------- */
+        .intro .line {
+            opacity: 0;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            text-align: center;
+            max-width: 80ch;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        .intro .line:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .intro .line:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .intro .line:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        .intro .line:nth-child(4) {
+            animation-delay: 9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ---------- 2. Letter with typing effect ---------- */
+        /* .paper {
+            max-width: 65ch;
+            padding: 2rem 1rem;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 20px rgba(255, 255, 255, .05);
+        }
+
+        .typed {
+            overflow: hidden;
+            border-right: .15em solid #fff;
+            white-space: nowrap;
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
+            max-width: 0;
+            animation: typing 4s steps(30, end) 1s forwards, blink .75s step-end infinite 0s;
+        } */
+
+        @keyframes typing {
+            from {
+                max-width: 0;
+            }
+
+            to {
+                max-width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* ---------- 3. Memory gallery ---------- */
+        .gallery {
+            column-count: 2;
+            /* Creates two columns */
+            column-gap: 15px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Image Styling */
+        .gallery img {
+            width: 100%;
+            margin-bottom: 15px;
+            /* Adds space between images */
+            border-radius: 10px;
+            break-inside: avoid;
+            /* Prevents images from breaking across columns */
+        }
+
+        .divider {
+            height: 2px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 30px 0;
+            border-radius: 100px;
+        }
+
+        .letter-section {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 1000px;
+            /* Increase the parent width if needed */
+        }
+
+        .letter-section img {
+            width: auto;
+            /* Let the image size depend on its own dimensions */
+            max-width: 97%;
+            /* Keeps it responsive on smaller screens */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+
+
+
+        /* ---------- 4. Farewell fade ---------- */
+        /* #farewell {
+            position: relative;
+        }
+
+        .farewell-text {
+            font-size: clamp(1.4rem, 4vw, 3rem);
+            text-align: center;
+            max-width: 80ch;
+            animation: fadeOut 10s 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        .final-line {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.4rem, 4vw, 3rem);
+            text-align: center;
+            opacity: 0;
+            animation: appear 10s 12s forwards;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+            }
+        } */
+         .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+            color: #fff;
+            font-size: 2rem;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            
+         }
+        .message {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        footer {
+            /* position: fixed; */
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 17px;
+            color: #ffffff;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Intro -->
+    <section id="intro" class="panel intro">
+        <p class="line">dear cock (without the k)</p>
+        <p class="line">I don’t know how to start this…</p>
+        <p class="line">But I felt I needed to say something for the one last time.</p>
+        <p class="line">Before I let you go. Before silence fills the spaces between us.</p>
+        <!-- <p class="line"></p> -->
+    </section>
+    <!-- 2. Memories gallery -->
+
+    <div class="gallery">
+        <img src="img1.jpg" alt="">
+        <img src="img2.jpg" alt="">
+        <img src="img3.jpg" alt="">
+        <img src="img4.png" alt="">
+        <img src="img5.jpg" alt="">
+        <img src="img6.jpg" alt="">
+        <img src="img7.jpg" alt="">
+        <img src="img8.jpg" alt="">
+        <!-- <img src="" alt="">
+        <img src="" alt=""> -->
+    </div>
+    <div class="divider"></div>
+
+    <section>
+        <div class="letter-section">
+            <img src="letter.png" alt="">
+        </div>
+    </section>
+
+
+    <!-- 4. Farewell -->
+    
+    <div class="message container">
+        A part of me will always carry you.
+    </div>
+
+</body>
+<footer>
+    GoodBye Shreyashi.
+</footer>
+</html>
